@@ -1,0 +1,22 @@
+{
+  "name": "webvrtest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "budo index.js -o -l",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "eventemitter3": "^1.2.0",
+    "three": "^0.78.0",
+    "three-orbit-controls": "^72.0.0",
+    "three-trackballcontrols": "0.0.5",
+    "webvr-polyfill": "^0.9.15"
+  },
+  "devDependencies": {
+    "budo": "^8.3.0"
+  }
+}
