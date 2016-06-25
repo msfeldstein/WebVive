@@ -1,9 +1,9 @@
 var EventEmitter = require('eventemitter3');
 
 module.exports = function(THREE) {
-  THREE.ViveController = function ( id ) {
+    THREE.ViveController = function ( id ) {
 
-  	THREE.Object3D.call( this );
+    THREE.Object3D.call( this );
 
     var Events = new EventEmitter()
     Events.PadTouched = "PadTouched"
@@ -17,8 +17,8 @@ module.exports = function(THREE) {
     Events.PadDragged = "PadDragged"
     this.Events = Events
 
-  	this.matrixAutoUpdate = false;
-  	this.standingMatrix = new THREE.Matrix4();
+    this.matrixAutoUpdate = false;
+    this.standingMatrix = new THREE.Matrix4();
 
     this.onPadTouched = new EventEmitter()
     this.onPadUntouched = new EventEmitter()
@@ -26,30 +26,30 @@ module.exports = function(THREE) {
     this.onTriggerUnclicked = new EventEmitter()
 
     this.padTouched = false
-  	var scope = this;
+    var scope = this;
 
     var lastPadPosition = {
       x: 0,
       y: 0
     }
 
-  	function update() {
+    function update() {
 
-  		requestAnimationFrame( update );
+      requestAnimationFrame( update );
 
-  		var gamepad = navigator.getGamepads()[ id ];
+      var gamepad = navigator.getGamepads()[ id ];
 
-  		if ( gamepad !== undefined && gamepad.pose !== null ) {
+      if ( gamepad !== undefined && gamepad.pose !== null ) {
 
-  			var pose = gamepad.pose;
+        var pose = gamepad.pose;
 
-  			scope.position.fromArray( pose.position );
-  			scope.quaternion.fromArray( pose.orientation );
-  			scope.matrix.compose( scope.position, scope.quaternion, scope.scale );
-  			scope.matrix.multiplyMatrices( scope.standingMatrix, scope.matrix );
-  			scope.matrixWorldNeedsUpdate = true;
+        scope.position.fromArray( pose.position );
+        scope.quaternion.fromArray( pose.orientation );
+        scope.matrix.compose( scope.position, scope.quaternion, scope.scale );
+        scope.matrix.multiplyMatrices( scope.standingMatrix, scope.matrix );
+        scope.matrixWorldNeedsUpdate = true;
 
-  			scope.visible = true;
+        scope.visible = true;
         var wasTouched = scope.padTouched
         scope.padTouched = gamepad.buttons[0].touched
         if (scope.padTouched && !wasTouched) {
@@ -95,15 +95,15 @@ module.exports = function(THREE) {
 
 
 
-  		} else {
+      } else {
 
-  			scope.visible = false;
+        scope.visible = false;
 
-  		}
+      }
 
-  	}
+    }
 
-  	update();
+    update();
 
   };
 
