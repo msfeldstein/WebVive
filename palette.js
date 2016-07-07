@@ -47,7 +47,6 @@ var Palette = function(controller, options) {
 }
 
 Palette.prototype.onPadTouched = function() {
-  console.log(Object.keys(this))
   for (var i = 0; i < this.prototypes.length; i++) {
     var shape = this.prototypes[i]
     var tween = new Tween.Tween(shape.material)
